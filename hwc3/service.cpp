@@ -35,9 +35,9 @@ int main(int /*argc*/, char* argv[]) {
 
     // same as SF main thread
     struct sched_param param = {0};
-    param.sched_priority = 2;
-    if (sched_setscheduler(0, SCHED_FIFO | SCHED_RESET_ON_FORK, &param) != 0) {
-        LOG(ERROR) << "Couldn't set SCHED_FIFO: " << errno;
+    param.sched_priority = 1;
+    if (sched_setscheduler(0, SCHED_RR | SCHED_RESET_ON_FORK, &param) != 0) {
+        LOG(ERROR) << "Couldn't set SCHED_RR: " << errno;
     }
 
     std::unique_ptr<IComposerHal> halImpl = IComposerHal::create();
