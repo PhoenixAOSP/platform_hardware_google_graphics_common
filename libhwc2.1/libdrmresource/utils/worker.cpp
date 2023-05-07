@@ -79,7 +79,7 @@ void Worker::InternalRoutine() {
   if (is_rt_) {
     struct sched_param param = { 0 };
     param.sched_priority = priority_;
-    sched_setscheduler(0, SCHED_FIFO, &param);
+    sched_setscheduler(0, SCHED_RR, &param);
   } else {
     setpriority(PRIO_PROCESS, 0, priority_);
   }
